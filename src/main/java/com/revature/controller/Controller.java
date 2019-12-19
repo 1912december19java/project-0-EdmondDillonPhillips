@@ -21,9 +21,12 @@ public class Controller {
 		this.password = password;
 	}
 	
-	//if the user hits the login/logout route. Perform some logic
+	// User is prompted to login
+	// When logged in go to while loop that will loop over the controller
 	
-	//if the user hits the view balance route. Perform some logic.
+	// while loop 
+	
+	// If the user hits the view balance route. Perform some logic.
 	
 	// IF a user hits the withdraw money route. Perform some logic.
 	
