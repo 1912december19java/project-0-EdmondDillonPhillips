@@ -10,7 +10,7 @@ public class Controller {
 	
 	
 	//default constructor
-	Controller(){
+	public Controller(){
 		super();
 	}
 	
@@ -20,6 +20,11 @@ public class Controller {
 		this.username = username;
 		this.password = password;
 	}
+	
+	public void samplePrint() {
+		System.out.println("Hello from the Controller!");
+	}
+
 	
 	// User is prompted to login
 	// When logged in go to while loop that will loop over the controller
