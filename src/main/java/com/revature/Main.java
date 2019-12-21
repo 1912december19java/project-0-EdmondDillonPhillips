@@ -1,6 +1,9 @@
 package com.revature;
 
 import com.revature.controller.Controller;
+import com.revature.repository.Repository;
+
+
 
 /** 
  * Create an instance of your controller and launch your application.
@@ -10,7 +13,12 @@ import com.revature.controller.Controller;
 public class Main {
 
 	public static void main(String[] args) {
-			Controller controller = new Controller();
-			controller.samplePrint();
+		
+//			Controller controller = new Controller();
+			Controller.userLogin();
+			Controller.sampleControllerPrint();
+			
+//			Repository repository = new Repository();
+//			repository.sampleRepositoryPrint();
 	}
 }
