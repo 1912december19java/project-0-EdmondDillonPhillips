@@ -1,7 +1,6 @@
 package com.revature;
 
 import com.revature.controller.Controller;
-import com.revature.repository.Repository;
 
 
 
@@ -15,7 +14,9 @@ public class Main {
 	public static void main(String[] args) {
 		
 //			Controller controller = new Controller();
-			Controller.userLogin();
+			Controller.userNameLogin();
+			Controller.userPasswordLogin();
+			Controller.ServiceRoutes();
 			//Controller.sampleControllerPrint();
 			
 //			Repository repository = new Repository();
