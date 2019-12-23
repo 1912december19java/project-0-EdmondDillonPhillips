@@ -13,11 +13,17 @@ public class Repository {
 	    };
 	    
 	    public static String getPassword() {
-	        return username;
+	        return password;
 	    };
 	    public static void setPassword(String pwd) {
 	        password = pwd;
 	    };
+	    
+	    //Formating
+	    
+	    public static void printEqualsLine() {
+	    	System.out.println("|=====================================================================================|");
+	    }
 
 
 

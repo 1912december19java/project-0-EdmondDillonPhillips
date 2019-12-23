@@ -7,25 +7,6 @@ import com.revature.service.Service;
 
 public class Controller {
 	
-//	Boolean loggedIn; //login status
-//	static String username; //username of user
-//	Integer password; //password of user
-//	String checkBalance; // checks to see if user wants to check balance
-//	
-//	
-//	
-//	//default constructor
-//	public Controller(){
-//		super();
-//	}
-//	
-//	//constructor (overloading)
-//	Controller(Boolean loggedIn, String username, Integer password){
-//		this.loggedIn = loggedIn;
-//		this.username = username;
-//		this.password = password;
-//	}
-	
 	
 	//UserName Login Prompt
 	public static String userNameLogin() {
@@ -36,7 +17,7 @@ public class Controller {
 	    String user = Repository.getUser(); // Gets username from repository
 	    
 	    System.out.println("Username is: " + user);// Prints User Name
-	    
+	    Service.printUsername();
 	    return null;
 	}
 	
@@ -46,18 +27,21 @@ public class Controller {
 	    System.out.println("Enter Password"); 
 	    String temp = sc.nextLine();  // Read user input
 	    Repository.setPassword(temp);  //Sets password from input
-	    String user = Repository.getPassword(); // Gets 
+	    String pwd = Repository.getPassword(); // Gets password from repository
 	    
 	    System.out.println("Password Accepted");// Output user input
-	    
+	    Service.printPassword();
 	    return null;
 	}
 	
-	//UserName Password Prompt
+	//Services 
 	public static String ServiceRoutes() {
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
-	    System.out.println("What do you want to do? You can select...");
-	    System.out.println("View Balance " + "Withdraw Money " + "Deposit Money " + "View All Transactions " + " Transfer Money");
+	    Repository.printEqualsLine();
+	    System.out.println("| What do you want to do? You can select...                                           |");
+	    Repository.printEqualsLine();
+	    System.out.println("| View Balance |" + "Withdraw Money |" + "Deposit Money |" + "View All Transactions |" + " Transfer Money |");
+	    Repository.printEqualsLine();
 	    String temp = sc.nextLine();  // Read user input
 	    
 	    
@@ -92,16 +76,6 @@ public class Controller {
 	}
 	
 
-//	public static void sampleControllerPrint() {
-//		System.out.println("Hello from the Controller! This is another go. Discovery.");
-//		int username = Repository.getUser();
-//	}
-
-	
-	// User is prompted to login
-	// When logged in go to while loop that will loop over the controller
-	
-	
 	
 	
 	

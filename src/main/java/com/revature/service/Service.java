@@ -1,8 +1,17 @@
 package com.revature.service;
 
+import com.revature.repository.Repository;
+
 public class Service {
 	//simple print statement for login logout
 	
+	
+	public static void printUsername() {
+		System.out.println(Repository.getUser());
+	}
+	public static void printPassword() {
+		System.out.println(Repository.getPassword());
+	}
 	//simple print statement for view balance
 	public static void viewAccountBalance() {
 		System.out.println("View balance logic goes here.");
@@ -41,3 +50,5 @@ public class Service {
 	
 	
 }
+
+
