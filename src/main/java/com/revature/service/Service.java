@@ -4,6 +4,10 @@ public class Service {
 	//simple print statement for login logout
 	
 	//simple print statement for view balance
+	public static void viewAccountBalance() {
+		System.out.println("Account Balance");
+	}
+	
 	
 	//simple print statement for withdraw money
 	

@@ -16,7 +16,7 @@ public class Main {
 		
 //			Controller controller = new Controller();
 			Controller.userLogin();
-			Controller.sampleControllerPrint();
+			//Controller.sampleControllerPrint();
 			
 //			Repository repository = new Repository();
 //			repository.sampleRepositoryPrint();

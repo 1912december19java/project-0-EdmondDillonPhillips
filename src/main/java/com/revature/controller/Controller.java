@@ -7,7 +7,7 @@ import com.revature.repository.Repository;
 public class Controller {
 	
 //	Boolean loggedIn; //login status
-//	String username; //username of user
+//	static String username; //username of user
 //	Integer password; //password of user
 //	String checkBalance; // checks to see if user wants to check balance
 //	
@@ -25,21 +25,26 @@ public class Controller {
 //		this.password = password;
 //	}
 	
+	
+	//User Login Prompt
 	public static String userLogin() {
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
 	    System.out.println("Enter username");
-	    String userName = sc.nextLine();  // Read user input
-	    System.out.println("Username is: " + userName);  // Output user input
+	    String temp = sc.nextLine();  // Read user input
+	    Repository.setUser(temp);
+	    String user = Repository.getUser();
+	    
+	    System.out.println("Username is: " + user);// Output user input
 	    
 	    return null;
 	}
 	
 	
 
-	public static void sampleControllerPrint() {
-		System.out.println("Hello from the Controller! This is another go. Discovery.");
-		Repository.sampleRepositoryPrint();
-	}
+//	public static void sampleControllerPrint() {
+//		System.out.println("Hello from the Controller! This is another go. Discovery.");
+//		int username = Repository.getUser();
+//	}
 
 	
 	// User is prompted to login
