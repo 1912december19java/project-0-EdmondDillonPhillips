@@ -2,7 +2,7 @@ package com.revature.controller;
 
 import java.util.Scanner;
 
-import com.revature.repository.Repository;
+import com.revature.model.UserModel;
 import com.revature.service.Service;
 
 public class Controller {
@@ -13,8 +13,8 @@ public class Controller {
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
 	    System.out.println("Enter username");
 	    String temp = sc.nextLine();  // Read user input
-	    Repository.setUser(temp); // Sets username from input
-	    String user = Repository.getUser(); // Gets username from repository
+	    UserModel.setUsername(temp); // Sets username from input
+	    String user = UserModel.getUsername(); // Gets username from repository
 	    
 	    System.out.println("Username is: " + user);// Prints User Name
 	    Service.printUsername();
@@ -26,22 +26,22 @@ public class Controller {
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
 	    System.out.println("Enter Password"); 
 	    String temp = sc.nextLine();  // Read user input
-	    Repository.setPassword(temp);  //Sets password from input
-	    String pwd = Repository.getPassword(); // Gets password from repository
+	    UserModel.setPassword(temp);  //Sets password from input
+	    String pwd = UserModel.getPassword(); // Gets password from repository
 	    
 	    System.out.println("Password Accepted");// Output user input
 	    Service.printPassword();
-	    return null;
+	    return temp;
 	}
 	
 	//Services 
 	public static String ServiceRoutes() {
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
-	    Repository.printEqualsLine();
+	    UserModel.printEqualsLine();
 	    System.out.println("| What do you want to do? You can select...                                           |");
-	    Repository.printEqualsLine();
+	    UserModel.printEqualsLine();
 	    System.out.println("| View Balance |" + "Withdraw Money |" + "Deposit Money |" + "View All Transactions |" + " Transfer Money |");
-	    Repository.printEqualsLine();
+	    UserModel.printEqualsLine();
 	    String temp = sc.nextLine();  // Read user input
 	    
 	    

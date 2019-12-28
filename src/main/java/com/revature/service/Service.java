@@ -1,20 +1,21 @@
 package com.revature.service;
 
-import com.revature.repository.Repository;
+import com.revature.model.UserModel;
+
 
 public class Service {
 	//simple print statement for login logout
 	
 	
 	public static void printUsername() {
-		System.out.println(Repository.getUser());
+		System.out.println(UserModel.getUsername());
 	}
 	public static void printPassword() {
-		System.out.println(Repository.getPassword());
+		System.out.println(UserModel.getPassword());
 	}
 	//simple print statement for view balance
 	public static void viewAccountBalance() {
-		System.out.println("View balance logic goes here.");
+		System.out.println(UserModel.getBalance());
 	}
 	
 	
