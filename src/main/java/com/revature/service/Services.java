@@ -3,11 +3,13 @@ package com.revature.service;
 import com.revature.model.UserModel;
 
 
-public class Service {
+public class Services {
 	//simple print statement for login logout
 	
 	
-	public static void printUsername() {
+	private static final String String = null;
+
+  public static void printUsername() {
 		System.out.println(UserModel.getUsername());
 	}
 	public static void printPassword() {
@@ -28,6 +30,7 @@ public class Service {
 	//simple print statement for deposit money
 	
 	public static void depositMoney() {
+	  System.out.println("How much would you like to deposit?");
 		System.out.println("Deposit Money logic goes here. ");
 	}
 	
@@ -35,6 +38,14 @@ public class Service {
 	
 	public static void register() {
 		System.out.println("You want to register logic");
+		
+		UserModel user = new UserModel(null, null, 0, false);
+	}
+	
+	//simple print statement for logging in
+	
+	public static void login() {
+	  System.out.println("Login logic");
 	}
 	
 	//simple print statement to view transaction history

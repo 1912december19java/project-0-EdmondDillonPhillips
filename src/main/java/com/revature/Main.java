@@ -1,6 +1,7 @@
 package com.revature;
 
 import com.revature.controller.Controller;
+import com.revature.controller.MainUserInterface;
 
 
 
@@ -13,10 +14,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+	        MainUserInterface userinterface = new MainUserInterface();
+	        userinterface.promptUser();
 //			Controller controller = new Controller();
-			Controller.userNameLogin();
-			Controller.userPasswordLogin();
-			Controller.ServiceRoutes();
+//			Controller.userNameLogin();
+//			Controller.userPasswordLogin();
+//			Controller.ServiceRoutes();
 			//Controller.sampleControllerPrint();
 			
 //			Repository repository = new Repository();

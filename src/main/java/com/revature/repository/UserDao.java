@@ -1,6 +1,7 @@
 package com.revature.repository;
 
 import java.util.List;
+
 import com.revature.model.UserModel;
 
 public interface UserDao {
@@ -10,5 +11,8 @@ public interface UserDao {
   
   //Update existing user. Works by username.
   void update(UserModel user);
+  
+
+  void save(UserModel comic);
 
 }

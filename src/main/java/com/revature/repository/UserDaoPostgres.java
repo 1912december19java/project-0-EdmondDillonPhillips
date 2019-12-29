@@ -21,7 +21,7 @@ public class UserDaoPostgres implements UserDao {
       conn = DriverManager.getConnection(
           "jdbc:postgresql://database-2.cjmvqnxsbsoz.us-east-1.rds.amazonaws.com:5432/postgres",
           "postgres",
-          "Dillson1");
+          "");
     }
     catch(SQLException e){
       e.printStackTrace();
@@ -46,12 +46,16 @@ public class UserDaoPostgres implements UserDao {
       }
       // This line is typical, but not particularly useful for our 1-line rs
       while (rs.next()) {
-        out = new UserModel(rs.getString("username"), rs.getInt("password"), rs.getDouble("balance"));
+        out = new UserModel(rs.getString("username"), rs.getString("pswd"), rs.getDouble("balance"), true);
       }
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
+    
+    System.out.println(out.getUsername());
+    System.out.println(out.getPassword());
+    System.out.println(out.getBalance());
+    
     return out;
   }
 
@@ -65,6 +69,24 @@ public class UserDaoPostgres implements UserDao {
       
       stmt.execute();
       
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void save(UserModel user) {
+    // TODO Auto-generated method stub
+    PreparedStatement stmt = null;
+    try {
+      stmt = conn.prepareStatement(
+          "INSERT INTO comics(Username, Password, Balance) VALUES (?,?,?)");
+      stmt.setString(1, user.getUsername());
+      stmt.setString(2, user.getPassword());
+      stmt.setDouble(3, user.getBalance());
+ 
+      
+      stmt.execute();
     } catch (SQLException e) {
       e.printStackTrace();
     }
