@@ -1,6 +1,8 @@
 package com.revature.service;
 
+import java.util.Scanner;
 import com.revature.model.UserModel;
+import com.revature.repository.UserDaoPostgres;
 
 
 public class Services {
@@ -25,13 +27,29 @@ public class Services {
 	
 	public static void withdrawAmount() {
 		System.out.println("Withdraw money logic goes here. ");
+	      Scanner sc = new Scanner(System.in);  // Create a Scanner object
+	        System.out.println("Make an input"); 
+	        double temp = sc.nextDouble();  // Read user input
+	        UserModel.setAmountWithdrawn(temp);
+	        UserModel.setBalance();
+	        UserModel.getBalance();
+	        UserDaoPostgres user = new UserDaoPostgres();
+	        user.update();
 	}
 	
 	//simple print statement for deposit money
 	
 	public static void depositMoney() {
 	  System.out.println("How much would you like to deposit?");
-		System.out.println("Deposit Money logic goes here. ");
+	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
+	    System.out.println("Make an input"); 
+	    double temp = sc.nextDouble();  // Read user input
+		UserModel.setAmountAdded(temp);
+		UserModel.setDepositBalance();
+		UserModel.getDepositBalance();
+		UserDaoPostgres user = new UserDaoPostgres();
+		user.update();
+		
 	}
 	
 	//simple print statement for registering

@@ -14,6 +14,6 @@ public class CreatePassword {
       
       System.out.println("Password Accepted");// Output user input
       Services.printPassword();
-      return temp;
+      return pwd;
   }
 }

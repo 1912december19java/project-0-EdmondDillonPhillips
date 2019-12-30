@@ -5,14 +5,12 @@ import com.revature.model.UserModel;
 import com.revature.repository.UserDaoPostgres;
 import com.revature.service.CreatePassword;
 import com.revature.service.CreateUserName;
+import com.revature.service.RegisterUser;
 import com.revature.service.Services;
+import com.revature.service.UserLogin;
 
 public class MainUserInterface {
   
-  
-  
-  
-
   public void promptUser() {
 
     
@@ -21,27 +19,16 @@ public class MainUserInterface {
     String temp = sc.nextLine();  // Read user input
     
 if(temp.contentEquals("Register")) {
-  CreateUserName.userNameLogin();
-  CreatePassword.userPasswordLogin();
-  System.out.println("To start your account you need to deposit money.");
-  Services.depositMoney();
-  
+  RegisterUser.registerUser();
   
 }else if(temp.contentEquals("Login")) {
-  String tempname = ReadInput.readInput();
-  UserModel.setUsername(tempname);
-  String temppswd = ReadInput.readInput();
-  UserModel.setPassword(temppswd);
-
-  System.out.println(UserModel.getUsername());
-  System.out.println(UserModel.getPassword());
-  
-  UserDaoPostgres user = new UserDaoPostgres();
-  user.get(tempname);
-  
+  UserLogin.userLogin();
 }else {
+  
+  System.out.println("Try Again");
   MainUserInterface maininterface = new MainUserInterface();
   maininterface.promptUser();
+  
 }
 //    UserModel.setPassword(temp);  //Sets password from input
 //    String pwd = UserModel.getPassword(); // Gets password from repository

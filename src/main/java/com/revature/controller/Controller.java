@@ -26,25 +26,31 @@ public class Controller {
 		// If the user hits the view balance route. Perform some logic.
 	    if(temp.contentEquals("View Balance")) {
 	    	Services.viewAccountBalance();
+	        Controller.ServiceRoutes();
 	    }
 		// IF a user hits the withdraw money route. Perform some logic.
-	    else if(temp.contentEquals("Withdreaw Money")) {
+	    else if(temp.contentEquals("Withdraw Money")) {
 	    	Services.withdrawAmount();
+	        Controller.ServiceRoutes();
 	    }
 		// If a user hits the deposit money route. Perform some logic.
 	    else if(temp.contentEquals("Deposit Money")) {
 	    	Services.depositMoney();
+	        Controller.ServiceRoutes();
 	    }
 		// If a user hits the view all transactions route. Perform some logic.
 	    else if(temp.contentEquals("View All Transactions")) {
 	    	Services.transactionHistory();
+	        Controller.ServiceRoutes();
 	    }
 		// If a user hits the transfer money route. Perform some logic.
 	    else if(temp.contentEquals("Transfer Money")) {
 	    	Services.moneyTransfer();
+	        Controller.ServiceRoutes();
 	    }
 	    else {
 	    	System.out.println("You entered wrong information.");
+	        Controller.ServiceRoutes();
 	    }
 		
 	    

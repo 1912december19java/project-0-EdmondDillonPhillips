@@ -9,10 +9,15 @@ public interface UserDao {
   //gets a user by username
   UserModel get(String username);
   
-  //Update existing user. Works by username.
-  void update(UserModel user);
+//  //gets all users
+//  List<UserModel> getAll();
   
+  //Update existing user. Works by username.
+  void update();
+  
+//Save new user.
+  void save(UserModel user);
 
-  void save(UserModel comic);
+
 
 }

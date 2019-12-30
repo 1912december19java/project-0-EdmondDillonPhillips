@@ -8,27 +8,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.revature.repository.UserDao;
+
 import com.revature.model.UserModel;;
 
 public class UserDaoPostgres implements UserDao {
   
   private static Connection conn;
   
-  //Will run when the class loads, after static fields are initialized.
+
+  // This guy will run when the class loads, after static fields are initialized.
   static {
-    
     try {
       conn = DriverManager.getConnection(
-          "jdbc:postgresql://database-2.cjmvqnxsbsoz.us-east-1.rds.amazonaws.com:5432/postgres",
-          "postgres",
-          "");
-    }
-    catch(SQLException e){
+          System.getenv("connstring"), System.getenv("username"), System.getenv("password"));
+    } catch (SQLException e) {
       e.printStackTrace();
     }
-      System.out.println("Connected?");
+    System.out.println("Connected To PostgresSQL Database");
   }
   
+  //Returns the object "out which has the information collected from the database"
   @Override
   public UserModel get(String username) {
     UserModel out = null;
@@ -36,7 +35,7 @@ public class UserDaoPostgres implements UserDao {
     ResultSet rs = null;
 
     try {
-      stmt = conn.prepareStatement("SELECT * FROM Users WHERE username = ?");
+      stmt = conn.prepareStatement("SELECT username, pswd, balance FROM Users WHERE Username LIKE ?");
       // 1 is the index of the ?
       stmt.setString(1, username);
       // Now our statement is ready to go. Lets run it.
@@ -46,26 +45,48 @@ public class UserDaoPostgres implements UserDao {
       }
       // This line is typical, but not particularly useful for our 1-line rs
       while (rs.next()) {
-        out = new UserModel(rs.getString("username"), rs.getString("pswd"), rs.getDouble("balance"), true);
+        out = new UserModel(rs.getString("username"), rs.getString("pswd"), rs.getDouble("balance"));
       }
     } catch (SQLException e) {
       e.printStackTrace();
     }
     
-    System.out.println(out.getUsername());
-    System.out.println(out.getPassword());
     System.out.println(out.getBalance());
     
     return out;
   }
-
+  
+//  @Override
+//  public List<UserModel> getAll() {
+//    List<UserModel> allUsers = new ArrayList<UserModel>();
+//
+//    PreparedStatement stmt = null;
+//    ResultSet rs = null;
+//
+//    try {
+//      stmt = conn.prepareStatement("SELECT * FROM comics");
+//
+//      if (stmt.execute()) {
+//        rs = stmt.getResultSet();
+//      }
+//      while (rs.next()) {
+//        allUsers.add(new UserModel(rs.getString("username"), rs.getString("pswd"), rs.getDouble("balance"), true));
+//      }
+//    } catch (SQLException e) {
+//      e.printStackTrace();
+//    }
+//    return allUsers;
+//  }
+  
+//Changes balance in database
   @Override
-  public void update(UserModel user) {
+  public void update() {
     // TODO Auto-generated method stub
     PreparedStatement stmt = null;
     try {
-      stmt = conn.prepareStatement("UPDATE Users SET balance = ?");
-      stmt.setDouble(1, UserModel.setBalance(0));
+      stmt = conn.prepareStatement("UPDATE Users SET Balance = ? WHERE Username LIKE ?");
+      stmt.setDouble(1, UserModel.getBalance());
+      stmt.setString(2, UserModel.getUsername());
       
       stmt.execute();
       
@@ -80,7 +101,7 @@ public class UserDaoPostgres implements UserDao {
     PreparedStatement stmt = null;
     try {
       stmt = conn.prepareStatement(
-          "INSERT INTO comics(Username, Password, Balance) VALUES (?,?,?)");
+          "INSERT INTO Users(Username, Pswd, Balance) VALUES (?,?,?)");
       stmt.setString(1, user.getUsername());
       stmt.setString(2, user.getPassword());
       stmt.setDouble(3, user.getBalance());
@@ -91,5 +112,7 @@ public class UserDaoPostgres implements UserDao {
       e.printStackTrace();
     }
   }
+
+
 
 }

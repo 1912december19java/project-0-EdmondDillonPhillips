@@ -14,6 +14,6 @@ public class CreateUserName {
       
       System.out.println("Username is: " + user);// Prints User Name
       Services.printUsername();
-      return null;
+      return user;
   }
 }

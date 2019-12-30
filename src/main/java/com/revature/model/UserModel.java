@@ -6,19 +6,49 @@ public class UserModel {
   private static String password;
   private static double balance;
   private static boolean loggedin;
+  private double depositBalance;
+  private static double amountAdded;
+  private static double amountWithdrawn;
+
+  //Constructor for User Model
+  public UserModel(String usrnm, String pswd, double blnce) {
+    super();
+    this.username = usrnm;
+    this.password = pswd;
+    this.balance = blnce;
+  }
+
+
+
+  public static double getAmountWithdrawn() {
+    return amountWithdrawn;
+  }
+
+
+  public static void setAmountWithdrawn(double amountWithdrawn) {
+    UserModel.amountWithdrawn = amountWithdrawn;
+  }
+
+
 
   
-//Constructor for User Model
-  public UserModel(String usrnm, String pswd, double blnce, boolean login) {
-    super();
-    username = usrnm;
-    password = pswd;
-    balance = blnce;
-    loggedin = login;
+  
+public UserModel() {
+    // TODO Auto-generated constructor stub
   }
-  
-  
-//Getter/Setter for username
+
+
+public static double getAmountAdded() {
+    return amountAdded;
+  }
+
+
+  public static void setAmountAdded(double amountAdded) {
+    UserModel.amountAdded = amountAdded;
+  }
+
+
+  //Getter/Setter for username
   public static String getUsername() {
     return username;
   }
@@ -38,9 +68,23 @@ public class UserModel {
   public static double getBalance() {
     return balance;
   }
-  public static void setBalance(double blnce) {
-    balance = blnce;
+  public static void setBalance() {
+    balance -= amountWithdrawn;
   }
+  
+  public static void setInitialBalance() {
+    balance = 0;
+  }
+  
+  //Getter/Setter for updatedBalance
+  public static double getDepositBalance() {
+    return balance;
+  }
+  public static void setDepositBalance() {
+    balance += amountAdded;
+  }
+  
+  
   
   //Getter/setter for logged in
   public static boolean isLoggedin() {
