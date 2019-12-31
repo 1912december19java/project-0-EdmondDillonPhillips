@@ -7,11 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.revature.repository.UserDao;
+import org.apache.log4j.Logger;
 
 import com.revature.model.UserModel;;
 
 public class UserDaoPostgres implements UserDao {
+  
+  private static Logger log = Logger.getLogger(UserDaoPostgres.class);
   
   private static Connection conn;
   
@@ -21,8 +25,9 @@ public class UserDaoPostgres implements UserDao {
     try {
       conn = DriverManager.getConnection(
           System.getenv("connstring"), System.getenv("username"), System.getenv("password"));
+      log.info("Connected to Databse");
     } catch (SQLException e) {
-      e.printStackTrace();
+      log.error("Failed to connect to database", e);
     }
     System.out.println("Connected To PostgresSQL Database");
   }
@@ -30,6 +35,7 @@ public class UserDaoPostgres implements UserDao {
   //Returns the object "out which has the information collected from the database"
   @Override
   public UserModel get(String username) {
+    log.info("Attempting to get User with username: " + username);
     UserModel out = null;
     PreparedStatement stmt = null;
     ResultSet rs = null;
@@ -48,7 +54,7 @@ public class UserDaoPostgres implements UserDao {
         out = new UserModel(rs.getString("username"), rs.getString("pswd"), rs.getDouble("balance"));
       }
     } catch (SQLException e) {
-      e.printStackTrace();
+      log.error("Failed to retireve User with ID " + username, e );
     }
     
     System.out.println(out.getBalance());
