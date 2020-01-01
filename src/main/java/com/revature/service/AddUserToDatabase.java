@@ -16,6 +16,7 @@ public class AddUserToDatabase {
     
     
 
-    saveUser.save(username, pswd, blnce);
+    saveUser.save(user);
+//    username, pswd, blnce
   }
 }

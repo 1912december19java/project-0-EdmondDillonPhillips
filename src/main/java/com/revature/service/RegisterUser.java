@@ -1,17 +1,18 @@
 package com.revature.service;
 
 import com.revature.controller.Controller;
+import com.revature.controller.MainUserInterface;
 import com.revature.model.UserModel;
 import com.revature.repository.UserDaoPostgres;
 
 public class RegisterUser {
   
   public static void registerUser() {
-    String usrnm = CreateUserName.userNameLogin(); //stores local username
-    String pswrd = CreatePassword.userPasswordLogin(); //stores local password
+    String usrnm = CreateUserName.usernameCredentials(); //Saves to 'usrnm' what the user wants to make a username
+    String pswrd = CreatePassword.passwordCredentials(); //Saves to 'pswrd' what the user wants to make a password
     System.out.println("To start your account you need to deposit money.");//Initialize balance
     
-    Services.depositMoney();
+    Services.depositMoneyOnRegister();
     Double blnce = UserModel.getBalance();
     UserModel usr = new UserModel(usrnm, pswrd, blnce);
     usrnm = usr.getUsername();
@@ -24,8 +25,10 @@ public class RegisterUser {
     
     UserDaoPostgres newUser = new UserDaoPostgres();
     newUser.save(usr);
+    System.out.println("User with username " + usrnm + " has been registered.");
     
-    Controller.ServiceRoutes();
+    MainUserInterface maininterface = new MainUserInterface();
+    maininterface.promptUser();
     
   }
 

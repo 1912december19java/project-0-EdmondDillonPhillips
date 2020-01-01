@@ -16,13 +16,6 @@ public class Main {
 		
 	        MainUserInterface userinterface = new MainUserInterface();
 	        userinterface.promptUser();
-//			Controller controller = new Controller();
-//			Controller.userNameLogin();
-//			Controller.userPasswordLogin();
-//			Controller.ServiceRoutes();
-			//Controller.sampleControllerPrint();
-			
-//			Repository repository = new Repository();
-//			repository.sampleRepositoryPrint();
+
 	}
 }

@@ -29,12 +29,12 @@ public class UserDaoPostgres implements UserDao {
     } catch (SQLException e) {
       log.error("Failed to connect to database", e);
     }
-    System.out.println("Connected To PostgresSQL Database");
+    System.out.println("Connected");
   }
   
   //Returns the object "out which has the information collected from the database"
   @Override
-  public UserModel get(String username) {
+  public UserModel get(String username, String password) {
     log.info("Attempting to get User with username: " + username);
     UserModel out = null;
     PreparedStatement stmt = null;
@@ -57,32 +57,15 @@ public class UserDaoPostgres implements UserDao {
       log.error("Failed to retireve User with ID " + username, e );
     }
     
-    System.out.println(out.getBalance());
     
+    //**Zombie Code**
+//    System.out.println(out.getBalance());
+//    
+//    System.out.println(out.getUsername());
+//    System.out.println(out.getPassword());
+    //**Zombie Code**
     return out;
   }
-  
-//  @Override
-//  public List<UserModel> getAll() {
-//    List<UserModel> allUsers = new ArrayList<UserModel>();
-//
-//    PreparedStatement stmt = null;
-//    ResultSet rs = null;
-//
-//    try {
-//      stmt = conn.prepareStatement("SELECT * FROM comics");
-//
-//      if (stmt.execute()) {
-//        rs = stmt.getResultSet();
-//      }
-//      while (rs.next()) {
-//        allUsers.add(new UserModel(rs.getString("username"), rs.getString("pswd"), rs.getDouble("balance"), true));
-//      }
-//    } catch (SQLException e) {
-//      e.printStackTrace();
-//    }
-//    return allUsers;
-//  }
   
 //Changes balance in database
   @Override
@@ -97,7 +80,8 @@ public class UserDaoPostgres implements UserDao {
       stmt.execute();
       
     } catch (SQLException e) {
-      e.printStackTrace();
+      log.error("Failed to update database", e);
+//      e.printStackTrace();
     }
   }
 
@@ -107,7 +91,7 @@ public class UserDaoPostgres implements UserDao {
     PreparedStatement stmt = null;
     try {
       stmt = conn.prepareStatement(
-          "INSERT INTO Users(Username, Pswd, Balance) VALUES (?,?,?)");
+          "INSERT INTO Users(username, pswd, balance) VALUES (?,?,?)");
       stmt.setString(1, user.getUsername());
       stmt.setString(2, user.getPassword());
       stmt.setDouble(3, user.getBalance());
@@ -115,7 +99,8 @@ public class UserDaoPostgres implements UserDao {
       
       stmt.execute();
     } catch (SQLException e) {
-      e.printStackTrace();
+      log.error("Failed to save new user to databse", e);
+//      e.printStackTrace();
     }
   }
 

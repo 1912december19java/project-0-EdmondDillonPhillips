@@ -5,7 +5,7 @@ import com.revature.model.UserModel;
 
 public class CreateUserName {
   //UserName Login Prompt
-  public static String userNameLogin() {
+  public static String usernameCredentials() {
       Scanner sc = new Scanner(System.in);  // Create a Scanner object
       System.out.println("Enter username");
       String temp = sc.nextLine();  // Read user input

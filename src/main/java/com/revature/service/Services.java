@@ -6,12 +6,10 @@ import com.revature.repository.UserDaoPostgres;
 
 
 public class Services {
+  
 	//simple print statement for login logout
-	
-	
-	private static final String String = null;
 
-  public static void printUsername() {
+    public static void printUsername() {
 		System.out.println(UserModel.getUsername());
 	}
 	public static void printPassword() {
@@ -37,12 +35,11 @@ public class Services {
 	        user.update();
 	}
 	
-	//simple print statement for deposit money
+	//simple print statement for deposit money generaly
 	
 	public static void depositMoney() {
 	  System.out.println("How much would you like to deposit?");
 	    Scanner sc = new Scanner(System.in);  // Create a Scanner object
-	    System.out.println("Make an input"); 
 	    double temp = sc.nextDouble();  // Read user input
 		UserModel.setAmountAdded(temp);
 		UserModel.setDepositBalance();
@@ -52,12 +49,26 @@ public class Services {
 		
 	}
 	
+//simple print statement for deposit money generaly
+    
+    public static void depositMoneyOnRegister() {
+      System.out.println("How much would you like to deposit?");
+        Scanner sc = new Scanner(System.in);  // Create a Scanner object
+        double temp = sc.nextDouble();  // Read user input
+        UserModel.setAmountAdded(temp);
+        UserModel.setDepositBalance();
+//        UserModel.getDepositBalance();
+//        UserDaoPostgres user = new UserDaoPostgres();
+//        user.update();
+        
+    }
+	
 	//simple print statement for registering
 	
 	public static void register() {
 		System.out.println("You want to register logic");
 		
-		UserModel user = new UserModel(null, null, 0, false);
+		UserModel user = new UserModel(null, null, 0);
 	}
 	
 	//simple print statement for logging in

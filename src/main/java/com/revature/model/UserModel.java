@@ -6,7 +6,7 @@ public class UserModel {
   private static String password;
   private static double balance;
   private static boolean loggedin;
-  private double depositBalance;
+
   private static double amountAdded;
   private static double amountWithdrawn;
 
@@ -50,6 +50,7 @@ public static double getAmountAdded() {
 
   //Getter/Setter for username
   public static String getUsername() {
+//    System.out.println(username);
     return username;
   }
   public static void setUsername(String user) {
@@ -58,6 +59,7 @@ public static double getAmountAdded() {
 
 //Getter/Setter for password
   public static String getPassword() {
+//    System.out.println(password);
     return password;
   }
   public static void setPassword(String temp) {

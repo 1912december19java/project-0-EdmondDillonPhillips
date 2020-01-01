@@ -5,7 +5,7 @@ import com.revature.model.UserModel;
 
 public class CreatePassword {
   //UserName Password Prompt
-  public static String userPasswordLogin() {
+  public static String passwordCredentials() {
       Scanner sc = new Scanner(System.in);  // Create a Scanner object
       System.out.println("Enter Password"); 
       String temp = sc.nextLine();  // Read user input
