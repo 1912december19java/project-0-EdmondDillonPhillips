@@ -2,6 +2,7 @@ package com.revature.service;
 
 import com.revature.controller.Controller;
 import com.revature.controller.MainUserInterface;
+import com.revature.exception.UserAlreadyExistsException;
 import com.revature.model.UserModel;
 import com.revature.repository.UserDaoPostgres;
 
@@ -13,6 +14,14 @@ public class RegisterUser {
     System.out.println("To start your account you need to deposit money.");//Initialize balance
     
     Services.depositMoneyOnRegister();
+//    try {
+//      AddUserToDatabase.addUserToDatabase();
+//    } catch (UserAlreadyExistsException e) {
+//      // TODO Auto-generated catch block
+//      UserAlreadyExistsException.userAlreadyExistsException(e);
+//      MainUserInterface maininterface = new MainUserInterface();
+//      maininterface.promptUser();
+//    }
     Double blnce = UserModel.getBalance();
     UserModel usr = new UserModel(usrnm, pswrd, blnce);
     usrnm = usr.getUsername();

@@ -13,7 +13,7 @@ public class CreateUserName {
       String user = UserModel.getUsername(); // Gets username from repository
       
       System.out.println("Username is: " + user);// Prints User Name
-      Services.printUsername();
+//      Services.printUsername();
       return user;
   }
 }

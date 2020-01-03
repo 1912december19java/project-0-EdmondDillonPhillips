@@ -29,7 +29,7 @@ public class UserDaoPostgres implements UserDao {
     } catch (SQLException e) {
       log.error("Failed to connect to database", e);
     }
-    System.out.println("Connected");
+
   }
   
   //Returns the object "out which has the information collected from the database"

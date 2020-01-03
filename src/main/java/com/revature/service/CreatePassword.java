@@ -13,7 +13,7 @@ public class CreatePassword {
       String pwd = UserModel.getPassword(); // Gets password from repository
       
       System.out.println("Password Accepted");// Output user input
-      Services.printPassword();
+//      Services.printPassword();
       return pwd;
   }
 }

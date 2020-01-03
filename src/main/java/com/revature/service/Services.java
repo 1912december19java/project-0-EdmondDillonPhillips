@@ -1,11 +1,16 @@
 package com.revature.service;
 
 import java.util.Scanner;
+import org.apache.log4j.Logger;
+import com.revature.controller.MainUserInterface;
+import com.revature.exception.OverDraftException;
 import com.revature.model.UserModel;
 import com.revature.repository.UserDaoPostgres;
 
 
 public class Services {
+  
+  private static Logger log = Logger.getLogger(Services.class);
   
 	//simple print statement for login logout
 
@@ -23,11 +28,17 @@ public class Services {
 	
 	//simple print statement for withdraw money
 	
-	public static void withdrawAmount() {
-		System.out.println("Withdraw money logic goes here. ");
-	      Scanner sc = new Scanner(System.in);  // Create a Scanner object
+	public static void withdrawAmount() throws OverDraftException{
+	        
+	        double tempbalance = UserModel.getBalance();
+
+		    Scanner sc = new Scanner(System.in);  // Create a Scanner object
 	        System.out.println("Make an input"); 
 	        double temp = sc.nextDouble();  // Read user input
+	        if(temp > tempbalance || tempbalance < 0) {  // If user tries to overwithdraw
+	          log.error("User has overdrawn");
+	          throw new OverDraftException();
+	        }
 	        UserModel.setAmountWithdrawn(temp);
 	        UserModel.setBalance();
 	        UserModel.getBalance();
@@ -87,6 +98,18 @@ public class Services {
 	
 	public static void moneyTransfer() {
 		System.out.println("Money Transfer Prompt");
+	}
+	
+	//logout method
+	public static void logout() {
+	  String user = UserModel.getUsername();
+	  UserModel.setUsername(null);
+	  UserModel.setPassword(null);
+	  UserModel.setInitialBalance();
+	  log.info("The user " + user + " has logged out.");
+	  
+      MainUserInterface userinterface = new MainUserInterface();
+      userinterface.promptUser();
 	}
 	
 	

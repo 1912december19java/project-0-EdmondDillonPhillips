@@ -98,7 +98,7 @@ public static double getAmountAdded() {
   
   public static void printEqualsLine() {
     // TODO Auto-generated method stub
-    System.out.println("=======================================================================================================");
+    System.out.println("=======================================================");
     
   }
 

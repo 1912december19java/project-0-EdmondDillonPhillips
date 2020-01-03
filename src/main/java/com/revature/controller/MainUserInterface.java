@@ -8,8 +8,12 @@ import com.revature.service.CreateUserName;
 import com.revature.service.RegisterUser;
 import com.revature.service.Services;
 import com.revature.service.UserLogin;
+import org.apache.log4j.Logger;
+
 
 public class MainUserInterface {
+  private static Logger log = Logger.getLogger(UserDaoPostgres.class);
+
   
   public void promptUser() {
 
@@ -19,6 +23,7 @@ public class MainUserInterface {
     String temp = sc.nextLine();  // Read user input
     
 if(temp.contentEquals("Register")) {
+  log.info("User has tried to register.");
   RegisterUser.registerUser();
   
 }else if(temp.contentEquals("Login")) {

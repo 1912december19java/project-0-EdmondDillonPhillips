@@ -1,11 +1,16 @@
 package com.revature.service;
 
+import org.apache.log4j.Logger;
 import com.revature.controller.Controller;
+import com.revature.controller.MainUserInterface;
 import com.revature.controller.ReadInput;
 import com.revature.model.UserModel;
 import com.revature.repository.UserDaoPostgres;
 
 public class UserLogin {
+  
+  private static Logger log = Logger.getLogger(UserLogin.class);
+
   
   public static void userLogin() {
     UserModel.setUsername(null);
@@ -35,11 +40,20 @@ public class UserLogin {
 //    System.out.println(dataFromDB.getPassword());
 //    System.out.println("After grabbing from database");
     //**Zombie Code**
-    if(usernameFromDB.contentEquals(tempname) & passwordFromDB.contentEquals(temppswd)) {
-      System.out.println("It passed");
+    
+//    System.out.println(usernameFromDB);
+//    System.out.println(tempname);
+    
+    //I need to query all of the users on the database to see if a user already exists.
+    
+    if(usernameFromDB.contentEquals(tempname) && passwordFromDB.contentEquals(temppswd)) {
+
       Controller.ServiceRoutes();
     }else {
-      System.out.println("That user doesn't exist.");
+      log.error("User tried to log in with username: " + tempname + " and was unsuccessful.");
+      System.out.println("Incorrect username or password");
+      MainUserInterface maininterface = new MainUserInterface();
+      maininterface.promptUser();
     }
     
    //starts controller
